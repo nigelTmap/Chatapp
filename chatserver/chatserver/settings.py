@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'chatapi',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -167,7 +169,7 @@ SIMPLE_JWT = {
 
 
 JAZZMIN_SETTINGS = {
-    "site_title": "MovieX",
+    "site_title": "LiveChat",
     "welcome_sign":"Hello admin.Please enter your details",
     "site_header": "Cwivel",
     "site_brand": "CHAT APP",
@@ -210,3 +212,7 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 AUTH_USER_MODEL = 'chatapi.User'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
