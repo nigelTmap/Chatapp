@@ -20,7 +20,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=1000)
     bio = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="user_images", default="default.jpg")
+    image = models.ImageField(upload_to="uploads/images", default="default.jpg")
     verified = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
@@ -61,7 +61,7 @@ class ChatMessage(models.Model):
     @property
     def sender_profile(self):
         sender_profile = Profile.objects.get(user=self.sender)
-        return sender_profile
+        return sender_profile 
     @property
     def reciever_profile(self):
         reciever_profile = Profile.objects.get(user=self.reciever)
